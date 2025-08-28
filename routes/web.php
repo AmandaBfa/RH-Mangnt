@@ -17,5 +17,6 @@ Route::get('/email', function () {
 
 Route::get('/admin', function () {
     $admin = User::with('detail', 'department')->find(1);
-    dd($admin->toArray());
+
+    return view('admin', compact('admin'));
 });
