@@ -21,6 +21,8 @@
 
 <body>
 
+    <x-user-bar />
+
     {{ $slot }} {{-- espaço onde sera injetado os conteudos de cada view que for influenciada por essa estrutura --}}
 
     <!-- resources -->
