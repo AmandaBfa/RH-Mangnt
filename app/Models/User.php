@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticable
+// o authenticatable esta relacioando a autenticação com o login do usuario
+class User extends Authenticatable
 {
+    // esta relacionado ao envio do email
+    use Notifiable;
+
     public function detail()
     {
         // each user has one user_details
