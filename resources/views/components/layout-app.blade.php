@@ -27,9 +27,7 @@
 
         <x-side-bar />
 
-        <div class="m-3 p-3">
-            {{ $slot }} {{-- espaço onde sera injetado os conteudos de cada view que for influenciada por essa estrutura --}}
-        </div>
+        {{ $slot }} {{-- espaço onde sera injetado os conteudos de cada view que for influenciada por essa estrutura --}}
 
     </div>
 
