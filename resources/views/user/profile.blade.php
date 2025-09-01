@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="border p-5 shadow-sm">
-                        <form action="#" method="post">
+                        <form action="{{ route('user.profile.update-password') }}" method="post">
 
                             @csrf
 
@@ -23,7 +23,7 @@
                                 <input type="password" name="current_password" id="current_password"
                                     class="form-control">
                                 @error('current_password')
-                                    <div class="alert alert-danger mt-3">
+                                    <div class="text-danger mt-3">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -33,7 +33,7 @@
                                 <label for="new_password" class="form-label">New password</label>
                                 <input type="password" name="new_password" id="new_password" class="form-control">
                                 @error('new_password')
-                                    <div class="alert alert-danger mt-3">
+                                    <div class="text-danger mt-3">
                                         {{ $message }}
                                     </div>
                                 @enderror
@@ -44,7 +44,7 @@
                                 <input type="password" name="new_password_confirmation" id="new_password_confirmation"
                                     class="form-control">
                                 @error('new_password_confirmation')
-                                    <div class="alert alert-danger mt-3">
+                                    <div class="text-danger mt-3">
                                         {{ $message }}
                                     </div>
                                 @enderror
