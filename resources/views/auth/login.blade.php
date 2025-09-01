@@ -40,7 +40,7 @@
                     </form>
 
                     @if (session('status'))
-                        <div class="alert alert-sucess mt-3 text-center">
+                        <div class="alert alert-success mt-3 text-center">
                             {{ session('status') }}
                         </div>
                     @endif
