@@ -26,15 +26,21 @@
                         <tr>
                             <td>{{ $department->name }}</td>
                             <td>
-                                <div class="d-flex gap-3 justify-content-end">
-                                    <a href="#" class="btn btn-sm btn-outline-dark">
-                                        <i class="fa-regular fa-pen-to-square me-2"></i>
-                                        Edit
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-outline-dark">
-                                        <i class="fa-regular fa-trash-can me-2"></i>
-                                        Delete
-                                    </a>
+
+                                <div class="d-flex pag-3 justify-content-end">
+                                    @if ($department->id === 1)
+                                        <i class="fa-solid fa-lock"></i>
+                                    @else
+                                        <a href="{{ route('departments.edit-department', ['id' => $department->name]) }}"
+                                            class="btn btn-sm btn-outline-dark">
+                                            <i class="fa-regular fa-pen-to-square me-2"></i>
+                                            Edit
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-outline-dark">
+                                            <i class="fa-regular fa-trash-can me-2"></i>
+                                            Delete
+                                        </a>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
