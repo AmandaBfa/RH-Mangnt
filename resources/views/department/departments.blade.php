@@ -17,21 +17,29 @@
 
             <table class="table w-50" id="table">
                 <thead class="table-dark">
-                    <th>Department</th>
+                    <th>Departments</th>
                     <th></th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>[Department Name]</td>
-                        <td>
-                            <div class="d-flex gap-3 justify-content-end">
-                                <a href="#" class="btn btn-sm btn-outline-dark"><i
-                                        class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-                                <a href="#" class="btn btn-sm btn-outline-dark"><i
-                                        class="fa-regular fa-trash-can me-2"></i>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
+
+                    @foreach ($departments as $department)
+                        <tr>
+                            <td>{{ $department->name }}</td>
+                            <td>
+                                <div class="d-flex gap-3 justify-content-end">
+                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                        <i class="fa-regular fa-pen-to-square me-2"></i>
+                                        Edit
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-outline-dark">
+                                        <i class="fa-regular fa-trash-can me-2"></i>
+                                        Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+
                 </tbody>
             </table>
         @endif
