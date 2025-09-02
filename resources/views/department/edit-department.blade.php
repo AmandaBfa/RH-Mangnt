@@ -1,18 +1,22 @@
-<x-layout-app page-title="New department">
+<x-layout-app page-title="Edit department">
 
     <div class="w-25 p-4">
 
-        <h3>New department</h3>
+        <h3>Edit department</h3>
 
         <hr>
 
-        <form action="{{ route('departments.create-department') }}" method="post">
+        <form action="{{ route('departments.update-department') }}" method="post">
 
             @csrf
 
+            {{-- colocando o valor do id de forma escondida --}}
+            <input type="hidden" name="id" value="{{ $department->id }}"> {{-- existe metodos de segurança para esse ação, mas que no momento não estão impostas --}}
+
             <div class="mb-3">
                 <label for="name" class="form-label">Department name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" required
+                    value="{{ $department->name }}">
                 @error('name')
                     <div class="text-danger mt-3">
                         {{ $message }}
@@ -22,7 +26,7 @@
 
             <div class="mb-3">
                 <a href="{{ route('departments') }}" class="btn btn-outline-danger me-3">Cancel</a>
-                <button type="submit" class="btn btn-primary">Create department</button>
+                <button type="submit" class="btn btn-primary">Update department</button>
             </div>
 
         </form>

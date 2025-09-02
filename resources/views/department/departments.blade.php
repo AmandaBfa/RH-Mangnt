@@ -31,7 +31,7 @@
                                     @if ($department->id === 1)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
-                                        <a href="{{ route('departments.edit-department', ['id' => $department->name]) }}"
+                                        <a href="{{ route('departments.edit-department', ['id' => $department->id]) }}"
                                             class="btn btn-sm btn-outline-dark">
                                             <i class="fa-regular fa-pen-to-square me-2"></i>
                                             Edit
