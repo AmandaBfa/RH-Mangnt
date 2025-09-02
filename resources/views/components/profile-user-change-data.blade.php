@@ -1,6 +1,6 @@
 <div class="col-3">
     <div class="border p-5 shadow-sm">
-        <form action="{{ route('') }}" method="post">
+        <form action="{{ route('user.profile.update-user-data') }}" method="post">
 
             @csrf
 

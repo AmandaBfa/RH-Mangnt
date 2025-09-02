@@ -13,6 +13,8 @@
                 <x-profile-user-change-password />
 
                 {{-- mais um componente, alterar o name e o email --}}
+                <x-profile-user-change-data />
+
             </div>
         </div>
 
