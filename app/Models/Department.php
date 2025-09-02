@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    protected $fillable = ['name'];
+
     public function users()
     {
         // each department can be filled with multiple users
