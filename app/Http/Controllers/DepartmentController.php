@@ -80,4 +80,35 @@ class DepartmentController extends Controller
 
         return redirect()->route('departments');
     }
+
+    public function deleteDepartment($id)
+    {
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+
+        // check if id === 1 (igual)
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+
+        // display page for confirmation
+        return view('department.delete-department-confirm', compact('department'));
+    }
+
+    public function deleteDepartmentConfirm($id)
+    {
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+
+        // check if id === 1 (igual)
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+
+        $department->delete();
+
+        return redirect()->route('departments');
+    }
 }
