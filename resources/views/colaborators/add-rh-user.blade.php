@@ -40,7 +40,10 @@
                                     <label for="select_department">Department</label>
                                     <select class="form-select" id="select_department" name="select_department">
                                         @foreach ($departments as $department)
-                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                            @if ($department->id === 2)
+                                                {{-- esse if serve para que apenas o departamento do id 2 apareca, então se o id do departamento for igual a 2, a opção ira aparecer --}}
+                                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('select_department')

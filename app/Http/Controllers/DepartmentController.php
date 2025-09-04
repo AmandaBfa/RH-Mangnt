@@ -113,12 +113,5 @@ class DepartmentController extends Controller
     {
 
         return in_array(intval($id), [1, 2]);
-
-        // // check if id === 1 (igual)
-        // if (intval($id) === 1) {
-        //     return false;
-        // }
-
-        // return true;
     }
 }

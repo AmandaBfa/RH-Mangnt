@@ -45,6 +45,11 @@ class RhUserController extends Controller
             'admission_date' => 'required|date_format:Y-m-d',
         ]);
 
+        // check if department id == 2 (rh department)
+        if ($request->select_department != 2) {
+            return redirect()->route('home');
+        }
+
         // create new rh user
         $user = new User();
         $user->name = $request->name;
