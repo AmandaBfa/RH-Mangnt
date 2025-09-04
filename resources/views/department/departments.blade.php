@@ -28,7 +28,7 @@
                             <td>
 
                                 <div class="d-flex pag-3 justify-content-end">
-                                    @if ($department->id === 1)
+                                    @if (in_array($department->id, [1, 2]))
                                         <i class="fa-solid fa-lock"></i>
                                     @else
                                         <a href="{{ route('departments.edit-department', ['id' => $department->id]) }}"
