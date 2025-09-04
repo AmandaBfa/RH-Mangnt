@@ -15,11 +15,15 @@
                 <a href="{{ route('colaborators.new-colaborator') }}" class="btn btn-primary">Create a new department</a>
             </div>
 
-            <table class="table w-50" id="table">
+            <table class="table" id="table">
                 <thead class="table-dark">
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Permissions</th>
+                    <th>Admission date</th>
+                    <th>City</th>
+                    {{-- <th>Salary</th> --}}
                     <th></th>
                 </thead>
                 <tbody>
@@ -28,12 +32,16 @@
                         <tr>
                             <td>{{ $colaborator->name }}</td>
                             <td>{{ $colaborator->email }}</td>
+                            <td>{{ $colaborator->role }}</td>
 
                             @php
                                 $permissions = json_decode($colaborator->permissions);
                             @endphp
 
                             <td>{{ implode(',', $permissions) }}</td>
+                            <td>{{ $colaborator->detail->admission_date }}</td>
+                            <td>{{ $colaborator->detail->city }}</td>
+                            {{-- <td>{{ $colaborator->detail->salary }}</td> --}}
 
                             <td>
 
@@ -41,11 +49,11 @@
                                     @if ($colaborator->id === 1)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
-                                        <a href="#" class="btn btn-sm btn-outline-dark">
+                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fa-regular fa-pen-to-square me-2"></i>
                                             Edit
                                         </a>
-                                        <a href="#" class="btn btn-sm btn-outline-dark">
+                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fa-regular fa-trash-can me-2"></i>
                                             Delete
                                         </a>
