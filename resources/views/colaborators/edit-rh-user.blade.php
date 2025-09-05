@@ -9,7 +9,7 @@
 
             @csrf
 
-            <div class="d-flex gap-5">
+            <div class="d-flex gap-5 mt-4">
                 <p>Colaborator name: <strong>{{ $colaborator->name }}</strong></p>
                 <p>Colaborator email: <strong>{{ $colaborator->email }}</strong></p>
             </div>

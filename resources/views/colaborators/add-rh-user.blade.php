@@ -3,7 +3,6 @@
     <div class="w-100 p-4">
 
         <h3>New Human Resources Colaborator</h3>
-
         <hr>
 
         <form action="{{ route('colaborators.create-colaborator') }}" method="post">
