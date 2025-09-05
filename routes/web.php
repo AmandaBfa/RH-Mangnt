@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\ConfirmAccountController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RhUserController;
 use Illuminate\Support\Facades\Route;
+
+Route::middleware('guest')->group(function () {
+    // ------------ email confirmation and password definition ------------
+    Route::get('/confirm-account/{token}', [ConfirmAccountController::class, 'confirmAccount'])->name('confirm-account');
+});
 
 Route::middleware('auth')->group(function () {
 
