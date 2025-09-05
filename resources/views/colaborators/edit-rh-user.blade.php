@@ -5,7 +5,7 @@
         <h3>Edit Human Resources Colaborator</h3>
         <hr>
 
-        <form action="{{ route('colaborators.update-colaborator') }}" method="post">
+        <form action="{{ route('colaborators.rh.update-colaborator') }}" method="post">
 
             @csrf
 
