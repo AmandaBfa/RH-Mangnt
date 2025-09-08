@@ -48,7 +48,8 @@
                                     @if ($colaborator->id === 1)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
-                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3">
+                                        <a href="{{ route('colaborators.details', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fas fa-eye me-2"></i>
                                             Details
                                         </a>
