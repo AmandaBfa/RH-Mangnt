@@ -34,6 +34,6 @@ class ConfirmAccountController extends Controller
         $user->save();
 
         // redirect to login page with success message
-        return redirect()->route('login')->with('status', 'Your account has been confirmed and your password has been set. You can now log in.');
+        return view('auth.welcome')->with('user', $user); // passing the user to the welcome view
     }
 }
