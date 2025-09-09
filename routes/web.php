@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RhUserController;
 use App\Http\Controllers\RhManagementController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -20,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         // check if user is admin
         if (auth()->user()->role === 'admin') {
-            die('Vai para a página incial do ADMIN');
+            return redirect()->route('admin.home');
         } elseif (auth()->user()->role === 'rh') {
             return redirect()->route('rh.management.home');
         } else {
@@ -72,4 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/colaborators/delete-confirm/{id}', [ColaboratorsController::class, 'deleteColaboratorConfirm'])->name('colaborators.delete-confirm');
     // restore colaborator
     Route::get('/colaborators/restore/{id}', [ColaboratorsController::class, 'restoreColaborator'])->name('colaborators.restore');
+
+    // ------------ ADMIN ROUTES ------------
+    Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
 });
