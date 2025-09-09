@@ -29,7 +29,14 @@ class ColaboratorsController extends Controller
             return redirect()->route('profile');
         }
 
-        $colaborator = User::with('detail', 'department')->where('id', $id)->first();
+        $colaborator = User::with('detail', 'department')
+            ->where('id', $id)
+            ->first();
+
+        // check if colaborator exists
+        if (!$colaborator) {
+            abort(404);
+        }
 
         return view('colaborators.show-details')->with('colaborator', $colaborator);
     }
