@@ -11,7 +11,7 @@ class DepartmentController extends Controller
 {
     public function index()
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         $departments = Department::all(); // will look for all deparments that is authorizate
 
@@ -20,14 +20,14 @@ class DepartmentController extends Controller
 
     public function newDepartment(): View
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         return view('department.add-department');
     }
 
     public function createDepartment(Request $request)
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         // forma validation
         $request->validate([
@@ -43,7 +43,7 @@ class DepartmentController extends Controller
 
     public function editDepartment($id)
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         if ($this->isDepartmentBlocked($id)) {
             return redirect()->route('departments');
@@ -56,7 +56,7 @@ class DepartmentController extends Controller
 
     public function updateDepartment(Request $request)
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         $id = $request->id;
 
@@ -81,7 +81,7 @@ class DepartmentController extends Controller
 
     public function deleteDepartment($id)
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         if ($this->isDepartmentBlocked($id)) {
             // intval é uma função (do php) que transforma um valor em inteiro
@@ -96,7 +96,7 @@ class DepartmentController extends Controller
 
     public function deleteDepartmentConfirm($id)
     {
-        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to acess this page'); // erro mensage
+        Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
 
         if ($this->isDepartmentBlocked($id)) {
             return redirect()->route('departments');

@@ -45,9 +45,7 @@
                             <td>
 
                                 <div class="d-flex pag-3 justify-content-end">
-                                    @if ($colaborator->id === 1)
-                                        <i class="fa-solid fa-lock"></i>
-                                    @else
+                                    @empty($colaborator->deleted_at)
                                         <a href="{{ route('colaborators.details', ['id' => $colaborator->id]) }}"
                                             class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fas fa-eye me-2"></i>
@@ -58,7 +56,13 @@
                                             <i class="fa-regular fa-trash-can me-2"></i>
                                             Delete
                                         </a>
-                                    @endif
+                                    @else
+                                        <a href="{{ route('colaborators.restore', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3">
+                                            <i class="fa-solid fa-trash-arrow-up me-2"></i>
+                                            Restore
+                                        </a>
+                                    @endempty
                                 </div>
                             </td>
                         </tr>
