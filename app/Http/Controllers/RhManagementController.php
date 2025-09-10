@@ -139,4 +139,27 @@ class RhManagementController extends Controller
 
         return view('colaborators.show-details', compact('colaborator'));
     }
+
+    public function deleteColaborator($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page');
+
+        $colaborator = User::findOrFail($id);
+
+        // display confirmation page
+        return view('colaborators.delete-colaborator')->with('colaborator', $colaborator);
+    }
+
+    public function deleteColaboratorConfirm($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page');
+
+        // find user
+        $colaborator = User::findOrFail($id);
+
+        // soft delete user
+        $colaborator->delete();
+
+        return redirect()->route('rh.management.home')->with('success', 'Colaborator deleted successfully');
+    }
 }

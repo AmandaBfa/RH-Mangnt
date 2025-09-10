@@ -69,6 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/management/details/{id}', [RhManagementController::class, 'showDetails'])->name('rh.management.details');
 
 
+    Route::get('/rh-users/management/delete/{id}', [RhManagementController::class, 'deleteColaborator'])->name('rh.management.delete');
+    Route::get('/rh-users/management/delete-confirm/{id}', [RhManagementController::class, 'deleteColaboratorConfirm'])->name('rh.management.delete-confirm');
+
+
     // ------------ ADMIN COLABORATORS LIST ------------
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
     Route::get('/colaborators/details/{id}', [ColaboratorsController::class, 'showDetails'])->name('colaborators.details');

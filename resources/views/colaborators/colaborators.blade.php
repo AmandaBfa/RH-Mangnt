@@ -57,7 +57,8 @@
                                             <i class="fa-regular fa-edit me-2"></i>
                                             Edit
                                         </a>
-                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3">
+                                        <a href="{{ route('rh.management.delete', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fa-regular fa-trash-can me-2fas fa-eye me-2"></i>
                                             Delete
                                         </a>
