@@ -6,6 +6,9 @@ use App\Models\User;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmAccountEmail;
 
 class RhManagementController extends Controller
 {
@@ -14,7 +17,7 @@ class RhManagementController extends Controller
         Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page.');
 
         // get all colaborators that are not role admin nor role rh
-        $colaborators = User::with('detail', ['department'])
+        $colaborators = User::with(['detail', 'department'])
             ->where('role', 'colaborator')
             ->withTrashed()
             ->get();
@@ -35,5 +38,57 @@ class RhManagementController extends Controller
 
 
         return view('colaborators.add-colaborator', compact('departments'));
+    }
+
+    public function createColaborator(Request $request)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page');
+        // 403 é um código de status HTTP. o servidor entendeu a requisição, mas está recusando atender porque o usuário não tem permissão
+
+        // form validation
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'select_department' => 'required|exists:departments,id',
+            'address' => 'required|string|max:255',
+            'zip_code' => 'required|string|max:10',
+            'city' => 'required|string|max:50',
+            'phone' => 'required|string|max:50',
+            'salary' => 'required|decimal:2',
+            'admission_date' => 'required|date_format:Y-m-d',
+        ]);
+
+        // check if department id > 2 (rh department)
+        if ($request->select_department <= 2) {
+            return redirect()->route('home');
+        }
+
+        // create user confirmation token
+        $token = Str::random(60);
+
+        // create new user
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->confirmation_token = $token;
+        $user->role = 'colaborator';
+        $user->department_id = $request->select_department;
+        $user->permissions = '["colaborator"]';
+        $user->save();
+
+        // save user details
+        $user->detail()->create([
+            'address' => $request->address,
+            'zip_code' => $request->zip_code,
+            'city' => $request->city,
+            'phone' => $request->phone,
+            'salary' => $request->salary,
+            'admission_date' => $request->admission_date,
+        ]);
+
+        // sendo email to user 
+        Mail::to($user->email)->send(new ConfirmAccountEmail(route('confirm-account', $token)));
+
+        return redirect()->route('rh.management.home')->with('success', 'Colaborator created successfully');
     }
 }

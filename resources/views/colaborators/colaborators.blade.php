@@ -15,6 +15,10 @@
                     colaborator</a>
             </div>
         @else
+            <div class="my-4">
+                <a href="{{ route('rh.management.new-colaborator') }}" class="btn btn-primary">Create a new
+                    colaborator</a>
+            </div>
             <table class="table" id="table">
                 <thead class="table-dark">
                     <th>Name</th>
