@@ -91,14 +91,4 @@ class RhManagementController extends Controller
 
         return redirect()->route('rh.management.home')->with('success', 'Colaborator created successfully');
     }
-
-    public function editColaborator($id)
-    {
-        Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page');
-
-        $colaborator = User::with('detail')->findOrFail($id);
-        $departments = Department::where('id', '>', 2)->get();
-
-        return view('colaborators.edit-colaborator', compact('colaborator', 'departments'));
-    }
 }
