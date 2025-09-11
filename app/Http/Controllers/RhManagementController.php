@@ -162,4 +162,17 @@ class RhManagementController extends Controller
 
         return redirect()->route('rh.management.home')->with('success', 'Colaborator deleted successfully');
     }
+
+    public function restoreColaborator($id)
+    {
+        Auth::user()->can('rh') ?: abort(403, 'You are not authorized to access this page');
+
+        // find user including trashed
+        $colaborator = User::withTrashed()->findOrFail($id);
+
+        // restore user
+        $colaborator->restore();
+
+        return redirect()->route('rh.management.home')->with('success', 'Colaborator restored successfully');
+    }
 }

@@ -59,7 +59,7 @@
                                         </a>
                                         <a href="{{ route('rh.management.delete', ['id' => $colaborator->id]) }}"
                                             class="btn btn-sm btn-outline-dark ms-3">
-                                            <i class="fa-regular fa-trash-can me-2fas fa-eye me-2"></i>
+                                            <i class="fa-regular fa-trash-can me-2"></i>
                                             Delete
                                         </a>
                                         <a href="{{ route('rh.management.details', ['id' => $colaborator->id]) }}"
@@ -68,7 +68,8 @@
                                             Details
                                         </a>
                                     @else
-                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3">
+                                        <a href="{{ route('rh.management.restore', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3">
                                             <i class="fa-solid fa-trash-arrow-up me-2"></i>
                                             Restore
                                         </a>
