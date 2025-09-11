@@ -15,6 +15,9 @@
                 {{-- mais um componente, alterar o name e o email --}}
                 <x-profile-user-change-data />
 
+                {{-- mais um componente, alterar o endereço --}}
+                <x-profile-user-change-address />
+
             </div>
         </div>
 
