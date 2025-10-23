@@ -61,6 +61,24 @@ it('test if a rh user can login with success', function () {
     expect($this->get('/rh-users/management/home')->status())->toBe(200);
 });
 
+it('test if a colaborator user can login with success', function () {
+    // criar o usuário colaborador
+    addColaboratorUser();
+
+    // login com o colaborator
+    $result = $this->post('/login', [
+        'email' => 'worker1@rhmangnt.com',
+        'password' => 'Aa123456'
+    ]);
+
+    // verifica se o user colaborador fez login com sucesso
+    expect($result->status())->toBe(302);
+    expect($result->assertRedirect('/home'));
+
+    // verifica se o colaborator não consegue chegar a uma rota exclusiva do admin
+    expect($this->get('/departments')->status())->not()->toBe(200);
+});
+
 
 function addAdminUser()
 {
@@ -80,15 +98,31 @@ function addAdminUser()
 
 function addRhUser()
 {
-    // create admin user
+    // create rh user
     User::insert([
-        'department_id' => 1,   // Administração
+        'department_id' => 2,
         'name' => 'Colaborador de RH',
         'email' => 'rh1@rhmangnt.com',
         'email_verified_at' => now(),
         'password' => bcrypt('Aa123456'),
         'role' => 'rh',
         'permissions' => '["rh"]',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+}
+
+function addColaboratorUser()
+{
+    // create colaborator user
+    User::insert([
+        'department_id' => 3,
+        'name' => 'Colaborador de Armazém',
+        'email' => 'worker1@rhmangnt.com',
+        'email_verified_at' => now(),
+        'password' => bcrypt('Aa123456'),
+        'role' => 'colaborator',
+        'permissions' => '["colaborator"]',
         'created_at' => now(),
         'updated_at' => now(),
     ]);
