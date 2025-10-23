@@ -30,17 +30,7 @@ it('display the recover password page correctly', function () {
 it('test if an admin can login with success', function () {
 
     // criar um admin
-    User::insert([
-        'department_id' => 1,   // Administração
-        'name' => 'Administrador',
-        'email' => 'admin@rhmangnt.com',
-        'email_verified_at' => now(),
-        'password' => bcrypt('Aa123456'),
-        'role' => 'admin',
-        'permissions' => '["admin"]',
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
+    addAdminUser();
 
     // login com o admin criado
     $result = $this->post('/login', [
@@ -52,3 +42,19 @@ it('test if an admin can login with success', function () {
     expect($result->status())->toBe(302);
     expect($result->assertRedirect('/home'));
 });
+
+function addAdminUser()
+{
+    // create admin user
+    User::insert([
+        'department_id' => 1,   // Administração
+        'name' => 'Administrador',
+        'email' => 'admin@rhmangnt.com',
+        'email_verified_at' => now(),
+        'password' => bcrypt('Aa123456'),
+        'role' => 'admin',
+        'permissions' => '["admin"]',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+}
