@@ -4,7 +4,8 @@
 
 # ----------------------------
 
--   testar a rota inicial como sendo a página de Login
+> > -   testar a rota inicial como sendo a página de Login
+
 -   testar a rota de recuperação de senha
 -   testar processo de login com sucesso para o perfil de admin
 -   testar processo de login com sucesso para o perfil de rh
