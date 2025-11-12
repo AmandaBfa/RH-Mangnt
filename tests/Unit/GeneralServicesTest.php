@@ -38,15 +38,16 @@ it('Tests if the salary with bonus is calculater correctly', function () {
     expect($result)->toBe(1250);
 });
 
-// it('Tests if the fake json data is created correctly', function () {
+it('Tests if the fake json data is created correctly', function () {
 
-//     $results = GeneralServices::fakeDataInJson();
+    $results = GeneralServices::fakeDataInJson();
 
-//     $clients = json_decode($results, true);
+    $clients = json_decode($results, true);
 
-//     expect(count($clients))->toBeGreaterThanOrEqual(1);
-//     expect($clients[0])->toHaveKeys(['name', 'email', 'phone', 'address']);
-// })->skip('Temporariamente Inativo');
+    expect(count($clients))->toBeGreaterThanOrEqual(1);
+    expect($clients[0])->toHaveKeys(['name', 'email', 'phone', 'address']);
+});
+
 
 // it('Tests if the complex data is created correctly', function () {
 
