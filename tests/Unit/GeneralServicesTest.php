@@ -29,14 +29,14 @@ it('Tests if the phrase is created correctly', function () {
     expect($result)->toBe('O salário do(a) João Ribeiro é 1000');
 });
 
-// it('Tests if the salary with bonus is calculater correctly', function () {
-//     $salary = 1000;
-//     $bonus = 250;
+it('Tests if the salary with bonus is calculater correctly', function () {
+    $salary = 1000;
+    $bonus = 250;
 
-//     $result = generalServices::getSalaryWithBonus($salary, $bonus);
+    $result = generalServices::getSalaryWithBonus($salary, $bonus);
 
-//     expect($result)->toBe(1250);
-// });
+    expect($result)->toBe(1250);
+});
 
 // it('Tests if the fake json data is created correctly', function () {
 
