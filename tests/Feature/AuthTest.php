@@ -27,7 +27,7 @@ it('display the recover password page correctly', function () {
     expect($this->get('/forgot-password')->content())->toContain("Já sei a minha senha?");
 });
 
-it('test if an admin can login with success', function () {
+it('test if an admin user can login with success', function () {
 
     // criar um admin
     addAdminUser();

@@ -8,7 +8,6 @@
 > > -   testar a rota de recuperação de senha
 > > -   testar processo de login com sucesso para o perfil de admin
 > > -   testar processo de login com sucesso para o perfil de rh
-
 > > -   testar processo de login com sucesso para o perfil de colaborador
 
 -   testar a inserção de um novo user rh com o perfil do admin

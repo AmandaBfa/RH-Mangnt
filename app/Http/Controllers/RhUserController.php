@@ -18,9 +18,18 @@ class RhUserController extends Controller
     //     Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page');
     // }
 
+    // private function authorizeAdmin()
+    // {
+    //     if (!Auth::check() || Auth::user()->role !== 'admin') {
+    //         abort(403, 'You are not authorized to access this page');
+    //     }
+    // }
+
+
     public function index()
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         $colaborators = User::withTrashed()
             ->with('detail')
@@ -33,6 +42,7 @@ class RhUserController extends Controller
     public function newColaborator()
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         // get all departments
         $departments = Department::all();
@@ -43,6 +53,7 @@ class RhUserController extends Controller
     public function createRhColaborator(Request $request)
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         // form validation
         $request->validate([
@@ -94,6 +105,7 @@ class RhUserController extends Controller
     public function editRhColaborator($id)
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         $colaborator = User::with('detail')->where('role', 'rh')->findOrFail($id);
 
@@ -103,6 +115,7 @@ class RhUserController extends Controller
     public function updateRhColaborator(Request $request)
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         // form validation
         $request->validate([
@@ -135,6 +148,7 @@ class RhUserController extends Controller
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
         // $this->authorizeAdmin();
+        // $this->authorizeAdmin();
 
         $colaborator = User::findOrFail($id);
 
@@ -144,6 +158,7 @@ class RhUserController extends Controller
     public function deleteRhColaboratorConfirm($id)
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         $colaborator = User::findOrFail($id);
         // delete user
@@ -155,6 +170,7 @@ class RhUserController extends Controller
     public function restoreRhColaborator($id)
     {
         Auth::user()->can('admin') ?: abort(403, 'You are not authorized to access this page'); // erro mensage
+        // $this->authorizeAdmin();
 
         $colaborator = User::withTrashed()->where('role', 'rh')->findOrFail($id);
         $colaborator->restore();
