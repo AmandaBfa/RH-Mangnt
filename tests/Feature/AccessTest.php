@@ -22,6 +22,16 @@ it('Tests if is not possible to acces the home page without logged user', functi
     expect($this->get('/home')->status())->toBe(302);
 
     // ou
-
     expect($this->get('/home')->status())->not()->toBe(200);
+});
+
+it('Tests if user logged in can access to the login page', function () {
+
+    //Adicionar admin a base de dados
+    addAdminUser();
+
+    // Login automático
+    auth()->loginUsingId(1);
+
+    expect($this->get('/login')->status())->not()->toBe(200);
 });
