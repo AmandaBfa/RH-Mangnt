@@ -10,7 +10,8 @@
 > > -   testar processo de login com sucesso para o perfil de rh
 > > -   testar processo de login com sucesso para o perfil de colaborador
 
--   testar a inserção de um novo user rh com o perfil do admin
+> > -   testar a inserção de um novo user rh com o perfil do admin
+
 -   testar a inserção de um novo colaborador com o perfil do rh
 
 -   testar se um admin, apos login com sucesso, consegue ver a pagina de colaboradores rh
