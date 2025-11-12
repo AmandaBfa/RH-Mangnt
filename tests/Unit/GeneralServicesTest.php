@@ -48,17 +48,16 @@ it('Tests if the fake json data is created correctly', function () {
     expect($clients[0])->toHaveKeys(['name', 'email', 'phone', 'address']);
 });
 
+it('Tests if the complex data is created correctly', function () {
 
-// it('Tests if the complex data is created correctly', function () {
+    $result = GeneralServices::jsonComplexData();
 
-//     $result = GeneralServices::jsonComplexData();
+    $data = json_decode($result, true);
 
-//     $data = json_decode($result, true);
-
-//     expect($data)->toHaveKeys(['name', 'email', 'moradas', 'telefones']);
-//     expect($data['moradas'])->toBeArray();
-//     expect($data['moradas'][0])->toHaveKeys(['rua', 'cidade', 'pais']);
-//     expect($data['telefones'])->toHaveKeys(['phones', 'mobiles']);
-//     expect($data['telefones']['phones'])->toBeArray();
-//     expect($data['telefones']['mobiles'])->toBeArray();
-// })->todo('Rever código deste teste');
+    expect($data)->toHaveKeys(['name', 'email', 'moradas', 'telefones']);
+    expect($data['moradas'])->toBeArray();
+    expect($data['moradas'][0])->toHaveKeys(['rua', 'cidade', 'pais']);
+    expect($data['telefones'])->toHaveKeys(['phones', 'mobiles']);
+    expect($data['telefones']['phones'])->toBeArray();
+    expect($data['telefones']['mobiles'])->toBeArray();
+});
